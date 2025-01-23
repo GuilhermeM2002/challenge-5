@@ -19,6 +19,9 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ElementCollection
+    @CollectionTable(name = "animal_name", joinColumns = @JoinColumn(name = "animal_id"))
+    @Column(name = "name")
     private List<String> name;
 
     @Enumerated(EnumType.STRING)
