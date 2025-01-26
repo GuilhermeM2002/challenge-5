@@ -1,4 +1,4 @@
-package br.com.zoo.dto;
+package br.com.zoo.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,10 +7,16 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class FeedDto {
     private List<String> animalName;
+
+    public List<String> getAnimalName() {
+        return animalName;
+    }
+
+    public void setAnimalName(List<String> animalName) {
+        this.animalName = animalName;
+    }
 }

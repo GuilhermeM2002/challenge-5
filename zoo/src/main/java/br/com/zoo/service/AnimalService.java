@@ -1,7 +1,7 @@
 package br.com.zoo.service;
 
 import br.com.zoo.domain.core.Animal;
-import br.com.zoo.dto.AnimalDto;
+import br.com.zoo.application.dto.AnimalDto;
 import br.com.zoo.repository.AnimalRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;

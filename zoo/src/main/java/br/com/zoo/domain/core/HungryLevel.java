@@ -1,8 +1,5 @@
 package br.com.zoo.domain.core;
 
-import lombok.Getter;
-
-@Getter
 public enum HungryLevel {
     NOT_HUNGRY(0),
     SLIGHTLY_HUNGRY(2),
@@ -14,6 +11,10 @@ public enum HungryLevel {
 
     HungryLevel(int foodRequired) {
         this.foodRequired = foodRequired;
+    }
+
+    public int getFoodRequired() {
+        return foodRequired;
     }
 
     public HungryLevel getNextLevel() {

@@ -2,13 +2,11 @@ package br.com.zoo.service;
 
 import br.com.zoo.domain.core.Animal;
 import br.com.zoo.domain.core.HungryLevel;
-import br.com.zoo.dto.AnimalDto;
+import br.com.zoo.application.dto.AnimalDto;
 import br.com.zoo.repository.AnimalRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class AnimalThread implements Runnable {
     @Autowired
     private AnimalService animalService;
