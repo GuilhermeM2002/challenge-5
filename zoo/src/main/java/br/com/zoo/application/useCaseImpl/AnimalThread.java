@@ -1,9 +1,10 @@
-package br.com.zoo.service;
+package br.com.zoo.application.useCaseImpl;
 
 import br.com.zoo.domain.core.Animal;
 import br.com.zoo.domain.core.HungryLevel;
 import br.com.zoo.application.dto.AnimalDto;
 import br.com.zoo.repository.AnimalRepository;
+import br.com.zoo.service.AnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 

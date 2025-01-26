@@ -1,11 +1,5 @@
 CREATE TABLE animal (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    hungry_level VARCHAR(50)
-);
-
-CREATE TABLE animal_name (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    animal_id BIGINT NOT NULL,
     name VARCHAR(255),
-    CONSTRAINT fk_animal FOREIGN KEY (animal_id) REFERENCES animal(id) ON DELETE CASCADE
+    hungry_level VARCHAR(50)
 );

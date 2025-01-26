@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AnimalDto {
     private Long id;
-    private List<String> name;
+    private String name;
     private HungryLevel hungryLevel;
 
     public Long getId() {
@@ -21,11 +21,11 @@ public class AnimalDto {
         this.id = id;
     }
 
-    public List<String> getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(List<String> name) {
+    public void setName(String name) {
         this.name = name;
     }
 

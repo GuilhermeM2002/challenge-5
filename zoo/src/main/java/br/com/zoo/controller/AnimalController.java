@@ -2,8 +2,8 @@ package br.com.zoo.controller;
 
 import br.com.zoo.application.dto.AnimalDto;
 import br.com.zoo.application.dto.FeedDto;
+import br.com.zoo.domain.useCase.FeedAnimalUseCase;
 import br.com.zoo.service.AnimalService;
-import br.com.zoo.application.useCaseImpl.FeedAnimalUseCaseImpl;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +19,14 @@ public class AnimalController {
     @Autowired
     private AnimalService animalService;
     @Autowired
-    private FeedAnimalUseCaseImpl feedAnimalUseCase;
+    private FeedAnimalUseCase feedAnimalUseCase;
 
     @PostMapping("/save")
     @Transactional
     public ResponseEntity<AnimalDto> saveAnimal(UriComponentsBuilder builder, @RequestBody AnimalDto dto){
         AnimalDto animal = animalService.newAnimal(dto);
         var uri = builder.path("/{id}").buildAndExpand(animal.getId()).toUri();
-        return ResponseEntity.created(uri).body(animal);
+        return ResponseEntity.created(uri).body(dto);
     }
 
     @PostMapping("/feed")
