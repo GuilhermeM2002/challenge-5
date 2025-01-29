@@ -7,11 +7,10 @@ import br.com.zoo.service.AnimalService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/animal")
@@ -33,5 +32,17 @@ public class AnimalController {
     public ResponseEntity feedAnimal(@RequestBody FeedDto dto){
         feedAnimalUseCase.feedAnimal(dto.getAnimalName());
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<AnimalDto> getAnimal(@RequestBody AnimalDto dto){
+        AnimalDto animal = animalService.findAnimalByName(dto.getName());
+        return ResponseEntity.ok().body(animal);
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<AnimalDto>> getAllAnimal(){
+        List<AnimalDto> allAnimal = animalService.findAllAnimals();
+        return ResponseEntity.ok().body(allAnimal);
     }
 }

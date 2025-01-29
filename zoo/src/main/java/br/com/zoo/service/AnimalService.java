@@ -8,6 +8,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalService {
@@ -24,7 +26,14 @@ public class AnimalService {
     }
 
     public AnimalDto findAnimalByName(String name){
-        Animal animal = animalRepository.findAnimalByName(name);
+        Animal animal = animalRepository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("Animal not found: " + name));
         return mapper.map(animal, AnimalDto.class);
+    }
+
+    public List<AnimalDto> findAllAnimals() {
+        return animalRepository.findAll().stream()
+                .map(p -> mapper.map(p, AnimalDto.class))
+                .collect(Collectors.toList());
     }
 }

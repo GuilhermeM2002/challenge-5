@@ -4,7 +4,9 @@ import br.com.zoo.domain.core.Animal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
-    public Animal findAnimalByName(String name);
+   Optional<Animal> findByName(String name);
 }
