@@ -25,7 +25,7 @@ public class AnimalController {
     public ResponseEntity<AnimalDto> saveAnimal(UriComponentsBuilder builder, @RequestBody AnimalDto dto){
         AnimalDto animal = animalService.newAnimal(dto);
         var uri = builder.path("/{id}").buildAndExpand(animal.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
+        return ResponseEntity.created(uri).body(animal);
     }
 
     @PostMapping("/feed")
