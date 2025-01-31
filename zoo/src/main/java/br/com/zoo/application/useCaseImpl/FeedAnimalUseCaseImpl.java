@@ -3,6 +3,7 @@ package br.com.zoo.application.useCaseImpl;
 import br.com.zoo.domain.useCase.FeedAnimalUseCase;
 import br.com.zoo.repository.AnimalRepository;
 import br.com.zoo.service.AnimalService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class FeedAnimalUseCaseImpl implements FeedAnimalUseCase {
     private AnimalRepository animalRepository;
     @Autowired
     private AnimalService animalService;
+    @Autowired
+    private ModelMapper mapper;
 
     @Override
     @Async
@@ -22,7 +25,7 @@ public class FeedAnimalUseCaseImpl implements FeedAnimalUseCase {
         int foodQuantity = 100;
 
         animalName.forEach((name) -> {
-            AnimalThread animalThread = new AnimalThread(name, foodQuantity);
+            AnimalThread animalThread = new AnimalThread(name, foodQuantity, animalService, animalRepository, mapper);
             Thread thread = new Thread(animalThread);
             thread.start();
         });
